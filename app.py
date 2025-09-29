@@ -2,6 +2,12 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+# Root URL to show friendly message
+@app.route("/")
+def home():
+    return "Flask app is running! Use POST /generate-message to get messages."
+
+# API endpoint
 @app.route("/generate-message", methods=["POST"])
 def generate_message():
     data = request.json
